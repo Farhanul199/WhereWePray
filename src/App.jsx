@@ -29,7 +29,6 @@ function App() {
     <div className="app-shell">
       <header className="site-header">
         <button className="brand" onClick={() => setPage('Home')} aria-label="WhereWePraying home">
-          <span className="logo-slot" aria-hidden="true">⌂</span>
           <span>WhereWePraying<span className="question">?</span></span>
         </button>
         <nav>
