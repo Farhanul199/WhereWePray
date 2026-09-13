@@ -1,0 +1,52 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "WhereWePraying Public Web Interface",
+    "version": "1.0.0",
+    "description": "Machine-readable description of the public WhereWePraying web surface. The current application is a client-side web app and does not expose an authenticated data API. Authentication scopes are documented as a reserved permission vocabulary rather than being attached to public routes."
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "getHomepage",
+        "summary": "Get the public homepage",
+        "responses": {
+          "200": {
+            "description": "HTML homepage",
+            "content": {"text/html": {"schema": {"type": "string"}}}
+          }
+        }
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "operationId": "getOpenApiDocument",
+        "summary": "Get the OpenAPI document",
+        "responses": {
+          "200": {
+            "description": "OpenAPI document",
+            "content": {"application/json": {"schema": {"type": "object"}}}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "whereweprayingOAuth2": {
+        "type": "oauth2",
+        "description": "Reserved least-privilege permission vocabulary for a future authenticated WhereWePraying API. No public operation currently requires OAuth.",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "/oauth/token",
+            "scopes": {
+              "mosques:read": "Read published mosque information",
+              "prayer-times:read": "Read published prayer-time information",
+              "content:read": "Read published WhereWePraying content"
+            }
+          }
+        }
+      }
+    }
+  }
+}
